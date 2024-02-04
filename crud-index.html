@@ -52,10 +52,29 @@
             placeholder="productDescription"
           ></textarea>
         </div>
-        <button class="btn btn-primary w-100" onclick="addProduct()">
+        <button
+          id="addBTN"
+          class="btn btn-primary w-100"
+          onclick="addProduct()"
+        >
           Add Product
         </button>
+        <button
+          id="updateBTN"
+          class="btn btn-primary w-100 d-none"
+          onclick="updateProduct()"
+        >
+          Update Product
+        </button>
       </section>
+      <input
+        type="text"
+        class="w-75 mt-3 form-control"
+        placeholder="Search..."
+        id="searchInput"
+        oninput="searchProduct()"
+      />
+
       <section class="bg-danger mt-3">
         <table class="table">
           <tr>

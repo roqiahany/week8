@@ -20,8 +20,17 @@ var priceProductInput = document.getElementById('productPrice');
 var categoryProductInput = document.getElementById('productCategory');
 var descriptionProductInput = document.getElementById('productDescription');
 // console.log(nameProductInput);
+var searchInput = document.getElementById('searchInput');
+
+var addBTN = document.getElementById('addBTN');
+var updateBTN = document.getElementById('updateBTN');
+var indexNum = 0;
 
 var producrContainer = [];
+if (localStorage.getItem('products') != null) {
+  producrContainer = JSON.parse(localStorage.getItem('products'));
+  displayData();
+}
 
 function addProduct() {
   var product = {
@@ -32,23 +41,87 @@ function addProduct() {
   };
   producrContainer.push(product);
   console.log(producrContainer);
+  localStorage.setItem('products', JSON.stringify(producrContainer));
+  displayData();
+  clearForm();
 }
 
 function displayData() {
   var cartona = '';
-  for (var i = 0; i < 4; i++) {
+  for (var i = 0; i < producrContainer.length; i++) {
     cartona += `<tr>
-              <td>oppo</td>
-              <td>9000</td>
-              <td>mob</td>
-              <td>yyyyyy</td>
+              <td>${producrContainer[i].name}</td>
+              <td>${producrContainer[i].price}</td>
+              <td>${producrContainer[i].cate}</td>
+              <td>${producrContainer[i].desc}</td>
               <td>
-                <button class="btn btn-outline-warning btn-sm">update</button>
-                <button class="btn btn-outline-danger btn-sm">delete</button>
-              </td>
+                <button class="btn btn-outline-warning btn-sm" onClick='setProduct(${i})'>update</button>
+                <button class="btn btn-outline-danger btn-sm "  onclick="deleteProduct(${i})">delete</button>
+                </td>
             </tr>`;
   }
   document.getElementById('tableData').innerHTML = cartona;
 }
 
-displayData();
+function deleteProduct(elementNum) {
+  producrContainer.splice(elementNum, 1);
+  localStorage.setItem('products', JSON.stringify(producrContainer));
+  displayData();
+}
+
+function searchProduct() {
+  var term = searchInput.value;
+  var cartona = '';
+  for (var i = 0; i < producrContainer.length; i++) {
+    if (producrContainer[i].name.toLowerCase().includes(term.toLowerCase())) {
+      cartona += `<tr>
+              <td>${producrContainer[i].name}</td>
+              <td>${producrContainer[i].price}</td>
+              <td>${producrContainer[i].cate}</td>
+              <td>${producrContainer[i].desc}</td>
+              <td>
+                <button class="btn btn-outline-warning btn-sm" >update</button>
+                <button class="btn btn-outline-danger btn-sm "  onclick="deleteProduct(${i})">delete</button>
+                </td>
+            </tr>`;
+    }
+    document.getElementById('tableData').innerHTML = cartona;
+  }
+}
+
+function setProduct(index) {
+  indexNum = index;
+  var currentProduct = producrContainer[index];
+  nameProductInput.value = currentProduct.name;
+  priceProductInput.value = currentProduct.price;
+  categoryProductInput.value = currentProduct.cate;
+  descriptionProductInput.value = currentProduct.desc;
+
+  addBTN.classList.add('d-none');
+  updateBTN.classList.remove('d-none');
+}
+
+function updateProduct() {
+  var product = {
+    name: nameProductInput.value,
+    price: priceProductInput.value,
+    cate: categoryProductInput.value,
+    desc: descriptionProductInput.value,
+  };
+  producrContainer.splice(indexNum, 1, product);
+  console.log(producrContainer);
+  displayData();
+  localStorage.setItem('products', JSON.stringify(producrContainer));
+
+  addBTN.classList.remove('d-none');
+  updateBTN.classList.add('d-none');
+
+  clearForm();
+}
+
+function clearForm() {
+  nameProductInput.value = '';
+  priceProductInput.value = '';
+  categoryProductInput.value = '';
+  descriptionProductInput.value = '';
+}
