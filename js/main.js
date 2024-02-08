@@ -1,127 +1,59 @@
-// var friends = ['alaa', 'mai', 'roqa', 'toto'];
-// var x = friends.pop();
-//var x = friends.shift();
-//var x = friends.push();
-// var x = friends.unshift();
-// var x = friends.length;
-//var x = friends.indexOf('alaa');
-// var x = friends.lastIndexOf('alaa');
-//var x = friends.includes('alaa');
-//var x = friends.slice(1,3);
-//var x = friends.splice(2,1); // delete
-// var x = friends.splice(3,0,'koko');//add
-// var x = friends.splice(2, 1, 'koko'); // add,delete
+var bookMarkNameInput = document.getElementById('bookMarkName');
+var bookMarkURLInput = document.getElementById('bookMarkURL');
 
-// console.log(friends);
-// console.log(x);
+var containerBookMark = [];
+// var indexNum = 0;
 
-var nameProductInput = document.getElementById('productName');
-var priceProductInput = document.getElementById('productPrice');
-var categoryProductInput = document.getElementById('productCategory');
-var descriptionProductInput = document.getElementById('productDescription');
-// console.log(nameProductInput);
-var searchInput = document.getElementById('searchInput');
-
-var addBTN = document.getElementById('addBTN');
-var updateBTN = document.getElementById('updateBTN');
-var indexNum = 0;
-
-var producrContainer = [];
-if (localStorage.getItem('products') != null) {
-  producrContainer = JSON.parse(localStorage.getItem('products'));
-  displayData();
+if (localStorage.getItem('bookmarks') != null) {
+  containerBookMark = JSON.parse(localStorage.getItem('bookmarks'));
+  displayBookMark();
 }
-
-function addProduct() {
-  var product = {
-    name: nameProductInput.value,
-    price: priceProductInput.value,
-    cate: categoryProductInput.value,
-    desc: descriptionProductInput.value,
+function addBookMark() {
+  var bookMark = {
+    name: bookMarkNameInput.value,
+    url: bookMarkURLInput.value,
   };
-  producrContainer.push(product);
-  console.log(producrContainer);
-  localStorage.setItem('products', JSON.stringify(producrContainer));
-  displayData();
-  clearForm();
+  containerBookMark.push(bookMark);
+  localStorage.setItem('bookmarks', JSON.stringify(containerBookMark));
+  displayBookMark();
+  clear();
 }
 
-function displayData() {
+function displayBookMark() {
   var cartona = '';
-  for (var i = 0; i < producrContainer.length; i++) {
-    cartona += `<tr>
-              <td>${producrContainer[i].name}</td>
-              <td>${producrContainer[i].price}</td>
-              <td>${producrContainer[i].cate}</td>
-              <td>${producrContainer[i].desc}</td>
-              <td>
-                <button class="btn btn-outline-warning btn-sm" onClick='setProduct(${i})'>update</button>
-                <button class="btn btn-outline-danger btn-sm "  onclick="deleteProduct(${i})">delete</button>
-                </td>
-            </tr>`;
+  for (var i = 0; i < containerBookMark.length; i++) {
+    cartona += ` <tr>
+    <td>${i}</td>
+    <td>${containerBookMark[i].name}</td>
+    <td>
+      <button id='visitBTN' class="btn btn-success" onClick='visit(${i})'>
+        <i class="fa-solid fa-eye pe-2" ></i>Visit
+      </button>
+    </td>
+    <td>
+      <button class="btn btn-danger" onClick='deleteBookMark(${i})'>
+        <i class="fa-solid fa-trash-can pe-2"></i>Delete
+      </button>
+    </td>
+  </tr>`;
   }
-  document.getElementById('tableData').innerHTML = cartona;
+  document.getElementById('bodyData').innerHTML = cartona;
 }
 
-function deleteProduct(elementNum) {
-  producrContainer.splice(elementNum, 1);
-  localStorage.setItem('products', JSON.stringify(producrContainer));
-  displayData();
-}
-
-function searchProduct() {
-  var term = searchInput.value;
-  var cartona = '';
-  for (var i = 0; i < producrContainer.length; i++) {
-    if (producrContainer[i].name.toLowerCase().includes(term.toLowerCase())) {
-      cartona += `<tr>
-              <td>${producrContainer[i].name}</td>
-              <td>${producrContainer[i].price}</td>
-              <td>${producrContainer[i].cate}</td>
-              <td>${producrContainer[i].desc}</td>
-              <td>
-                <button class="btn btn-outline-warning btn-sm" >update</button>
-                <button class="btn btn-outline-danger btn-sm "  onclick="deleteProduct(${i})">delete</button>
-                </td>
-            </tr>`;
-    }
-    document.getElementById('tableData').innerHTML = cartona;
+function visit(i) {
+  var url = containerBookMark[i].url;
+  if (url !== '') {
+    window.open(url, '_blank');
   }
 }
 
-function setProduct(index) {
-  indexNum = index;
-  var currentProduct = producrContainer[index];
-  nameProductInput.value = currentProduct.name;
-  priceProductInput.value = currentProduct.price;
-  categoryProductInput.value = currentProduct.cate;
-  descriptionProductInput.value = currentProduct.desc;
-
-  addBTN.classList.add('d-none');
-  updateBTN.classList.remove('d-none');
+function deleteBookMark(i) {
+  containerBookMark.splice(containerBookMark[i], 1);
+  localStorage.setItem('bookmarks', JSON.stringify(containerBookMark));
+  displayBookMark();
 }
 
-function updateProduct() {
-  var product = {
-    name: nameProductInput.value,
-    price: priceProductInput.value,
-    cate: categoryProductInput.value,
-    desc: descriptionProductInput.value,
-  };
-  producrContainer.splice(indexNum, 1, product);
-  console.log(producrContainer);
-  displayData();
-  localStorage.setItem('products', JSON.stringify(producrContainer));
-
-  addBTN.classList.remove('d-none');
-  updateBTN.classList.add('d-none');
-
-  clearForm();
-}
-
-function clearForm() {
-  nameProductInput.value = '';
-  priceProductInput.value = '';
-  categoryProductInput.value = '';
-  descriptionProductInput.value = '';
+function clear() {
+  bookMarkNameInput.value = '';
+  bookMarkURLInput.value = '';
 }
