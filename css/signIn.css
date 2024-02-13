@@ -1,0 +1,54 @@
+body {
+  background-color: #24353f;
+}
+
+.test {
+  height: 500px;
+}
+h5 {
+  color: #17a2b8;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a,
+p {
+  color: #fff;
+}
+
+.card {
+  background-color: #24353f;
+}
+
+.alertt {
+  color: red;
+}
+
+input::placeholder {
+  color: #a3afb6 !important;
+}
+.form-control {
+  background-color: #24353f;
+}
+.form-control:focus {
+  background-color: #24353f;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #24353f;
+}
+
+.card {
+  box-shadow: -5px 2px 54px -9px rgba(0, 0, 0, 1);
+}
+
+button {
+  color: #1d6b7b;
+}
+
+input {
+  color: #fff !important;
+}

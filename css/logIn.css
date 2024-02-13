@@ -1,0 +1,16 @@
+body {
+  background-color: #24353f;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header,
+h1 {
+  box-shadow: -5px 2px 54px -9px rgba(0, 0, 0, 1);
+}
+h1 {
+  color: #80bdff;
+}
