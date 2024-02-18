@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <section>
+      <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed z-3">
+        <div class="container">
+          <a class="branding d-flex" href="/">
+            <img src="logo@2x.png" alt="" class="logo" width="64" height="38" />
+            <div class="logo-type">
+              <h1 class="siteTitle">Weather</h1>
+              <small class="siteDescription">tagline goes here</small>
+            </div>
+          </a>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item nav-item-current">
+                <a class="nav-link active" aria-current="page">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active">News</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active">live Cameras</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active"> photos </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- hero -->
+      <div class="hero">
+        <div class="container">
+          <form class="find-location position-relative">
+            <input
+              class="text-start mt-lg-5 p-3 rounded-5 btn btn-dark form-control w-100"
+              type="text"
+              placeholder="Find your location..."
+              id="search"
+            />
+            <input
+              type="button"
+              class="btn btn-info py-2 px-5 rounded-5 position-absolute"
+              value="Find"
+              id="submit"
+            />
+          </form>
+        </div>
+      </div>
+      <!-- table -->
+      <div class="forcastTable">
+        <div class="container d-flex w-h-35 justify-content-center">
+          <!-- one -->
+          <div class="forcastContainer">
+            <div class="today forecast">
+              <div
+                class="forecast-header px-3 d-flex justify-content-between"
+                id="today"
+              >
+                <div class="day color-head">Friday</div>
+                <div class="date color-head">16February</div>
+              </div>
+              <div
+                class="forecast-content py-5 px-3 d-flex flex-column align-items-start justify-content-around"
+                id="current"
+              >
+                <div class="location color-head fs-4">Cairo</div>
+                <div
+                  class="degree color-white d-flex justify-content-around align-items-center"
+                >
+                  <div class="fw-bolder num">13<sup>o</sup>C</div>
+
+                  <div class="forecast-icon">
+                    <img src="113.png" class="icon-113" alt="" />
+                  </div>
+                </div>
+                <div class="custom col-custom">Clear</div>
+                <div>
+                  <span class=""
+                    ><img
+                      src="icon-umberella.png"
+                      alt=""
+                      class="pe-2"
+                    />20%</span
+                  >
+                  <span class=""
+                    ><img src="icon-wind.png" alt="" class="pe-2" />18km/h</span
+                  >
+                  <span
+                    ><img
+                      src="icon-compass.png"
+                      alt=""
+                      class="pe-2"
+                    />East</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- two -->
+          <div class="forcastContainer">
+            <div
+              class="forecast-header d-flex justify-content-center forecast-header-col"
+            >
+              <div class="day color-head">Saturday</div>
+            </div>
+            <!-- .forecast-header -->
+            <div
+              class="forecast-content forecast-content-col py-5 d-flex flex-column align-items-center justify-content-around"
+            >
+              <div class="forecast-icon text-center">
+                <img src="176.png" alt="" width="48" />
+              </div>
+              <div class="text-center degree color-white fs-4 fw-bold">
+                19.7<sup>o</sup>C
+              </div>
+              <p class="color-white text-center">11.6<sup>o</sup></p>
+              <div class="custom col-custom text-center">
+                Patchy rain nearby
+              </div>
+            </div>
+          </div>
+          <!-- three -->
+          <div class="forcastContainer color-white">
+            <div class="forecast-header-3">
+              <div class="day color-head text-center">Sunday</div>
+            </div>
+            <div
+              class="forecast-content-3 text-center py-5 d-flex flex-column align-items-center justify-content-around"
+            >
+              <div class="forecast-icon">
+                <img src="113 (2).png" alt="sun" width="48" />
+              </div>
+              <div>
+                <div class="degree fs-4 fw-bold">20.3<sup>o</sup>C</div>
+                <small>12<sup>o</sup></small>
+              </div>
+              <div class="custom col-custom">Sunny</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-dark part-black"></div>
+      <!-- footer -->
+      <footer class="site-footer">
+        <div class="container">
+          <div class="row pt-5">
+            <div class="col-md-8">
+              <form class="position-relative">
+                <input
+                  class="text-start mt-lg-5 p-3 rounded-5 btn btn-dark form-control w-100"
+                  type="text"
+                  placeholder="Enter your email to subscribe..."
+                  id="search"
+                />
+                <input
+                  type="button"
+                  class="btn btn-info py-2 px-5 rounded-5 position-absolute"
+                  value="Subscribe"
+                  id="submit"
+                />
+              </form>
+            </div>
+            <div class="col-md-3 col-md-offset-1 pt-5">
+              <div class="social-links">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-google-plus"></i></a>
+                <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <p class="colophon color-head">
+            Copyright 2014 Company name. Designed by Themezy. All rights
+            reserved
+          </p>
+        </div>
+      </footer>
+    </section>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
