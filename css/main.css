@@ -86,8 +86,8 @@ input::placeholder {
 .col-custom {
   color: rgb(0, 154, 216);
 }
-
-.today span {
+.wind-data,
+.wind-data span {
   color: #bbbfc8;
 }
 

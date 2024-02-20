@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>MyWeather</title>
     <link rel="stylesheet" href="css/all.min.css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/main.css" />
@@ -50,7 +50,7 @@
               class="text-start mt-lg-5 p-3 rounded-5 btn btn-dark form-control w-100"
               type="text"
               placeholder="Find your location..."
-              id="search"
+              id="searchFined"
             />
             <input
               type="button"
@@ -71,42 +71,44 @@
                 class="forecast-header px-3 d-flex justify-content-between"
                 id="today"
               >
-                <div class="day color-head">Friday</div>
-                <div class="date color-head">16February</div>
+                <div id="todayByName" class="day color-head">Friday</div>
+                <div class="d-flex justify-content-center align-items-center">
+                  <div id="todayByNum" class="date color-head pe-2">16</div>
+                  <span class="wind-data" id="todayInMonth">February</span>
+                </div>
               </div>
               <div
                 class="forecast-content py-5 px-3 d-flex flex-column align-items-start justify-content-around"
                 id="current"
               >
-                <div class="location color-head fs-4">Cairo</div>
+                <div id="todayLocation" class="location color-head fs-4"></div>
                 <div
                   class="degree color-white d-flex justify-content-around align-items-center"
                 >
-                  <div class="fw-bolder num">13<sup>o</sup>C</div>
+                  <div class="fw-bolder num">
+                    <span id="todayTemp" class="color-white">4</span>
+                    <sup>o</sup>C
+                  </div>
 
                   <div class="forecast-icon">
-                    <img src="113.png" class="icon-113" alt="" />
+                    <img
+                      id="todayConditionImg"
+                      src="113.png"
+                      class="icon-113"
+                      alt=""
+                    />
                   </div>
                 </div>
-                <div class="custom col-custom">Clear</div>
-                <div>
-                  <span class=""
-                    ><img
-                      src="icon-umberella.png"
-                      alt=""
-                      class="pe-2"
-                    />20%</span
-                  >
-                  <span class=""
-                    ><img src="icon-wind.png" alt="" class="pe-2" />18km/h</span
-                  >
-                  <span
-                    ><img
-                      src="icon-compass.png"
-                      alt=""
-                      class="pe-2"
-                    />East</span
-                  >
+                <div id="todayConditionText" class="custom col-custom">
+                  Clear
+                </div>
+                <div class="wind-data">
+                  <span id="humidity">20%</span>
+                  <img src="icon-umberella.png" alt="" class="pe-2" />
+                  <span id="wind">18km/h</span>
+                  <img src="icon-wind.png" alt="" class="pe-2" />
+                  <span id="windDirection">East</span>
+                  <img src="icon-compass.png" alt="" class="pe-2" />
                 </div>
               </div>
             </div>
@@ -116,20 +118,22 @@
             <div
               class="forecast-header d-flex justify-content-center forecast-header-col"
             >
-              <div class="day color-head">Saturday</div>
+              <div class="day color-head nextDayName">Saturday</div>
             </div>
-            <!-- .forecast-header -->
+
             <div
               class="forecast-content forecast-content-col py-5 d-flex flex-column align-items-center justify-content-around"
             >
               <div class="forecast-icon text-center">
-                <img src="176.png" alt="" width="48" />
+                <img src="176.png" alt="" class="nextConditionImg" width="48" />
               </div>
               <div class="text-center degree color-white fs-4 fw-bold">
-                19.7<sup>o</sup>C
+                <span class="nextMaxTemp">19.7</span><sup>o</sup>C
               </div>
-              <p class="color-white text-center">11.6<sup>o</sup></p>
-              <div class="custom col-custom text-center">
+              <p class="color-white text-center">
+                <span class="nextMinTemp pt-0">11.6</span><sup>o</sup>
+              </p>
+              <div class="nextConditionText custom col-custom text-center">
                 Patchy rain nearby
               </div>
             </div>
@@ -137,19 +141,26 @@
           <!-- three -->
           <div class="forcastContainer color-white">
             <div class="forecast-header-3">
-              <div class="day color-head text-center">Sunday</div>
+              <div class="day color-head text-center nextDayName">Sunday</div>
             </div>
             <div
               class="forecast-content-3 text-center py-5 d-flex flex-column align-items-center justify-content-around"
             >
               <div class="forecast-icon">
-                <img src="113 (2).png" alt="sun" width="48" />
+                <img
+                  src="113 (2).png"
+                  class="nextConditionImg"
+                  alt="sun"
+                  width="48"
+                />
               </div>
-              <div>
-                <div class="degree fs-4 fw-bold">20.3<sup>o</sup>C</div>
-                <small>12<sup>o</sup></small>
+              <div class="text-center degree color-white fs-4 fw-bold">
+                <span class="nextMaxTemp">19.7</span><sup>o</sup>C
               </div>
-              <div class="custom col-custom">Sunny</div>
+              <p class="color-white text-center">
+                <span class="nextMinTemp pt-0">11.6</span><sup>o</sup>
+              </p>
+              <div class="nextConditionText custom col-custom">Sunny</div>
             </div>
           </div>
         </div>
